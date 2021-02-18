@@ -1,0 +1,28 @@
+@import '../../../assets/sass/sass-assets.scss';
+
+.NavLogo-img {
+    width: 100px;
+    object-fit: contain;
+}
+
+// .NavLogo-container {
+//     position: relative;
+//     // float: left;
+//     width: 150px;
+//     height: 40px;
+//     opacity: 1;
+//     background-repeat: no-repeat;
+//     background-position: center;
+//     // background-image: url( '../../../assets/images/amazon-nav-logo.png' );
+//     background-size: auto 100%;
+//     @include transition;
+//
+//     @include break(xs) {
+//         // background-image: url( 'images/logo-JA-2-mobile.png' );
+//         width: 140px;
+//     }
+//
+//     &:hover {
+//         opacity: 0.7;
+//     }
+// }

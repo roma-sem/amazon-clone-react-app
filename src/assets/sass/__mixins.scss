@@ -1,0 +1,212 @@
+/**
+ * Defines and media breakpoint
+ *
+ * @param string $size
+ */
+ @mixin break ( $size ) {
+ 	@if ( $size == xs ) {
+ 		@media all and (max-width:767px) {
+ 			@content;
+ 		}
+ 	} @else if ( $size == sm ) {
+ 		@media all and (min-width:768px) and (max-width:991px) {
+ 		// @media all and (max-width:991px) {
+ 		// @media all and (min-width:768px) {
+ 			@content;
+ 		}
+ 	} @else if ( $size == md ) {
+ 		@media all and ( min-width:992px ) and ( max-width:1200px ) {
+ 		// @media all and ( max-width:1200px ) {
+ 		// @media all and ( min-width:992px ) {
+ 			@content;
+ 		}
+ 	} @else if ( $size == lg ) {
+ 		@media all and ( min-width:1200px ) {
+ 			@content;
+ 		}
+ 	} @else {
+ 		@media all and ( min-width: $size ) {
+ 			@content;
+ 		}
+ 	}
+ }
+
+
+
+/**
+ * Pushes element based on grid size
+ *
+ * @param number $colcount
+ * @param number $n
+ */
+@mixin push( $colcont: "",  $n: "" ) {
+	@if $colcont != "" and $n != "" {
+		left: st-colwidth( $colcont, $n );
+	}
+}
+
+
+/**
+ * Pulls element based on grid size
+ *
+ * @param number $colcount
+ * @param number $n
+ */
+@mixin pull( $colcont: "",  $n: "" ) {
+	@if $colcont != "" and $n != "" {
+		left: -st-colwidth( $colcont, $n );
+	}
+}
+
+/**
+ * Prepends cross browser prefix to CSS property
+ *
+ * @param [CSS Property] $cssProp;
+ * @param $value
+ */
+
+@mixin prefix( $cssProp, $value ) {
+	$prefixes: ('webkit', 'moz', 'o', 'ms');
+
+	#{$cssProp} : $value;
+
+	@each $pre in $prefixes {
+		$newProp: "-" + $pre + "-" + $cssProp;
+		#{$newProp} : $value;
+	}
+}
+
+
+/**
+ * Cross Browser CSS transition mixin
+ *
+ * @param [int/float] $speed
+ */
+@mixin transition( $speed:0.5s ) {
+	@include prefix(transition, $speed);
+}
+
+/**
+ * Cross Browser CSS border-radius mixin
+ *
+ * @params [var ags] $radius;
+ */
+@mixin borderRadius($radius...) {
+	@include prefix(border-radius, $radius );
+}
+
+
+
+
+
+// ---------------------------------------------------------------
+//							F O N T S
+// ---------------------------------------------------------------
+/* fontFace & fontFam Usage:
+ 	( 1 ) Import fonts from local folder (into global scope):
+		@include fontFace('MyAFont', 'myAfont_file_name');
+		@include fontFace('MyBFont', 'myBfont_file_name');
+		etc. ...
+	( 2 ) Include Font Family where needed:
+		h2 {
+			@include fontFam( 'MyFontA', 300, italic );
+		}
+*/
+@mixin fontFace( $font-family-name, $font-file-name ) {
+	$src: '../fonts/';
+	@font-face {
+		font-family: $font-family-name;
+		src: url("#{$src}#{$font-file-name}.eot");                                           /* IE9 Compat Modes */
+		src: url("#{$src}#{$font-file-name}.eot?#iefix")      format("embedded-opentype"),   /* IE6-IE8 */
+			 url("#{$src}#{$font-file-name}.woff")            format("woff"),                /* Pretty Modern Browsers */
+			 url("#{$src}#{$font-file-name}.ttf")             format("truetype"),            /* Safari, Android, iOS */
+			 url("#{$src}#{$font-file-name}.svg#svgFontName") format("svg");                 /* Legacy iOS */
+	}
+}
+
+@mixin fontFam ($family , $weight: 400, $style: normal ) {
+	font-family: $family;
+	font-weight: $weight;		// default font-weight: 400
+	font-style:  $style;		// default style: normal (italic, bold etc.)
+}
+
+
+
+/* fonSize Usage:
+ Sets default font sizes. If args provided, sets font size based on screen size.
+  	@param [CSS Unit of Measure] $unit,
+  	@param int $lg
+  	@param int $md
+  	@param int $sm
+  	@param int $xs
+*/
+@mixin fontsize ( $unit:px, $lg:"", $md:"", $sm:"", $xs:"" ) {
+	@if $lg != "" {
+		font-size: $lg + $unit;
+	}
+
+	@if $md != "" {
+		@include break(md) {
+			font-size: $md + $unit;
+		}
+	}
+
+	@if $sm != "" {
+		@include break(sm) {
+			font-size: $sm + $unit;
+		}
+	}
+
+	@if $xs != "" {
+		@include break(xs) {
+			font-size: $xs + $unit;
+		}
+	}
+}
+
+
+
+
+
+
+// ---------------------------------------------------------------
+//					B A C K G R O U N D   I M G
+// ---------------------------------------------------------------
+$img-src: 'images/';
+
+// Cover background image
+@mixin bg-img-cover($bg-img-name) {
+    background-image: url("#{$img-src}#{$bg-img-name}");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+// Center background image
+@mixin bg-img-center($bg-img-name) {
+    background-image: url("#{$img-src}#{$bg-img-name}");
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position: center;
+}
+
+
+
+
+
+
+// Cancel default browser FORM input styling
+@mixin formStandardInputStyle {
+    input[type=text],
+    input[type=email],
+    input[type=tel],
+    input[type=url],
+    input[type=search] {
+        appearance: none;
+        -moz-appearance: none;
+        -webkit-appearance: none;
+
+        border-radius: 0;
+        -moz-border-radius: 0;
+        -webkit-border-radius: 0;
+    }
+}

@@ -1,0 +1,16 @@
+@import '../../assets/sass/sass-assets.scss';
+
+.Header {
+    position: sticky;
+    top: 0;
+    height: 60px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    background-color: $dark-blue;
+
+    .NavLogo-img {
+        margin: 0 20px;
+        margin-top: 5px;
+    }
+}

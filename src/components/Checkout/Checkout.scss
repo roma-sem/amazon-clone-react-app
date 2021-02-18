@@ -1,0 +1,27 @@
+@import '../../assets/sass/sass-assets.scss';
+
+.Checkout {
+    display: flex;
+    // padding: 20px;
+    background-color: white;
+    height: max-content;
+
+    .checkout-ad-img {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .basket-title {
+        width: 95%;
+        margin-right: 10px;
+        border-bottom: 1px solid lightgrey;
+
+        h2 {
+            padding: 20px;
+        }
+
+        h3 {
+            padding: 0px 20px;
+        }
+    }
+}

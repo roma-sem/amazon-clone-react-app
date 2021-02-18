@@ -1,0 +1,38 @@
+@import '../../assets/sass/sass-assets.scss';
+
+.CheckoutShoppingItem {
+    display: flex;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    .inner-container {
+        // padding: 15px;
+        background-color: white;
+        display: flex;
+
+        .item-info {
+             padding-left: 20px;
+        }
+
+        .product-title {
+            font-size: 17px;
+            font-weight: 800;
+            max-width: 500px;
+        }
+
+        .product-rating {
+            color: $yellow-star;
+        }
+
+        img {
+            object-fit: contain;
+            width: 180px;
+            height: 180px;
+            // object-position: left;
+        }
+
+        button {
+            margin-top: 10px;
+        }
+    }
+}

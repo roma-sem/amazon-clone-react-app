@@ -1,0 +1,36 @@
+/**
+ * Two tier color selector function.
+ * Pass in a key:value map and the color to use from that map. If the color has option defined by a map i.e. 
+ * "red":("rgb": rgba(255 255 255), "hex": #hexcode ), pass in the name of that option. 
+ * 
+ * @param map $map
+ * @base string $base
+ * @option string $option
+ */
+@function st-color ( $map: false,  $color: false, $option: null) {
+	$value: false;
+
+	@if not $map { @return null; }
+
+	@if not $color{ @return null; }
+
+	@if $option {
+		$value: map-get( map-get($map, $color), $option );
+
+		@if $value != null and $value != "" {
+			@return $value;
+		}
+	}
+
+	$value: map-get($map, $color);
+
+	@if $value != null and $value != "" {
+
+		// If the valu is a list/map output the value instead of an error
+		@return nth($value, 1);
+	}
+}
+
+@function st-colwidth( $grid-count, $col-count ) {
+  @return percentage((100/$grid-count) * $col-count) / 100;
+}

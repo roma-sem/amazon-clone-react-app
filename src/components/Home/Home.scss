@@ -1,0 +1,34 @@
+@import '../../assets/sass/sass-assets.scss';
+
+.Home {
+    .home-img {
+        width: 100%;
+        z-index: -1;
+        margin-bottom: -150px;
+        mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
+    }
+
+    .products-container {
+        max-width: 1500px;
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 20px;
+        padding-right: 20px;
+
+        .ShoppingItem {
+            display: inline-block;
+            vertical-align: top;
+            position: relative;
+            width: 100%;
+            margin-bottom: 30px;
+
+            &:nth-child(-n+2) {
+                width: 50%;
+            }
+
+            &:nth-child(n+3):nth-child(-n+5) {
+                width: 33.33333%;
+            }
+        }
+    }
+}
