@@ -9,6 +9,8 @@ export default function Login() {
     const [password, setPassword] = useState("");
     const history = useHistory();
 
+    // console.log("[ Login ]: API KEY = ", process.env.REACT_APP_FIREBASE_API_KEY);
+
     function handleSignIn(e) {
         e.preventDefault();
         auth

@@ -2,7 +2,7 @@ import firebase from 'firebase';
 
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBwNNa3F2JtnKvme1_DIJDgvoAY_qtOOAA",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
   authDomain: "clone-97be1.firebaseapp.com",
   projectId: "clone-97be1",
   storageBucket: "clone-97be1.appspot.com",

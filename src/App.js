@@ -13,8 +13,10 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 const promise = loadStripe(
-    "pk_test_51IHHPrAr1SCEs9Xz9kd1bLmfw6bBgk7OppkdtaCshMvjtADk59s2Lqk59GGRj1sG0pUilPsSnDnDlmmuLX9k8XlY00EbkK7seY"
+    process.env.REACT_APP_STRIPE_API_KEY
 );
+
+// console.log("typeof(process.env.REACT_APP_STRIPE_API_KEY) = ", typeof(process.env.REACT_APP_STRIPE_API_KEY))
 
 function App() {
     const [state, dispatch] = useMyAppStateContext();
